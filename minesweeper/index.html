@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="opacity">
+            <h1>Minesweeper Screen Saver for MacOS</h1>
+            <h3>Randomly generates then automatically solves a minesweeper game.</h3>
+            <div class="screenshots">
+                <img src="screenshot-1.png"/>
+                <img src="screenshot-2.png"/>
+            </div>
+            <h2><a href="https://github.com/danieltorok/screensaver-minesweeper/releases/download/1.0/Minesweeper.saver.zip">Download for free from GitHub</a></h2>
+            <h3>If you like it, please consider donating.</h3>
+            <div id="donate-button-container">
+                <div id="donate-button"></div>
+                <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+                <script>
+                    PayPal.Donation.Button({
+                    env:'production',
+                    hosted_button_id:'M4CKRUQH2N9B4',
+                    image: {
+                        src:'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif',
+                        alt:'Donate with PayPal button',
+                        title:'PayPal - The safer, easier way to pay online!',
+                    }
+                }).render('#donate-button');
+                </script>
+            </div>
+        </div>
+        
+    </body>
+</html>
