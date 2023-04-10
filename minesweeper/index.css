@@ -36,3 +36,8 @@ a, a:visited, a:hover, a:focus {
 .screenshots img {
     width: 300px;
 }
+
+.gifs img {
+    width: 610px;
+    padding-top: 10px;
+}
