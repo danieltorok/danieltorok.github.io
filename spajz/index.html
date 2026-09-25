@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spájz</title>
+<meta name="description" content="Spájz keeps track of the food and medicine you already have at home, and shows what needs using first.">
+<meta property="og:title" content="Spájz">
+<meta property="og:description" content="Know what's about to expire in your kitchen, and in your medicine box.">
+<meta property="og:image" content="https://danieltorok.github.io/spajz/img/en-food.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5e9d7;
+    --surface: #fbf4ea;
+    --text: #22201d;
+    --muted: #5e564c;
+    --rule: #e3d4bf;
+    --food: #c26f3d;
+    --food-ink: #8b4a20;
+    --medicine: #566342;
+    --medicine-fill: #e0edcb;
+    --food-fill: #ffe0ce;
+    --shadow: 0 18px 40px -18px rgba(60, 38, 20, 0.45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #22201d;
+      --surface: #2b2622;
+      --text: #f1e9de;
+      --muted: #b5aa9b;
+      --rule: #3a342e;
+      --food: #f69c6b;
+      --food-ink: #f69c6b;
+      --medicine: #a9bd8a;
+      --medicine-fill: #34392b;
+      --food-fill: #4b3b30;
+      --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 18px/1.6 Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--food-ink); }
+  h1, h2 { font-family: Fraunces, Georgia, serif; line-height: 1.1; }
+
+  /* One language at a time once the script has picked one; both without it. */
+  html[data-lang="en"] [lang="hu"].page,
+  html[data-lang="hu"] [lang="en"].page { display: none; }
+
+  .bar {
+    max-width: 64rem; margin: 0 auto; padding: 1rem 1rem 0;
+    display: flex; justify-content: flex-end; gap: 0.25rem;
+  }
+  .bar a {
+    text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.9rem;
+    padding: 0.35rem 0.8rem; border-radius: 999px;
+  }
+  html[data-lang="en"] .bar a[hreflang="en"],
+  html[data-lang="hu"] .bar a[hreflang="hu"] { background: var(--text); color: var(--bg); }
+
+  .page { max-width: 64rem; margin: 0 auto; padding: 0 1rem 3rem; }
+
+  .hero { text-align: center; padding: 3rem 0 2rem; }
+  .hero h1 { font-size: clamp(3.2rem, 12vw, 5.5rem); font-weight: 900; margin: 0; letter-spacing: -0.02em; }
+  .tagline {
+    font-family: Fraunces, Georgia, serif; font-weight: 700;
+    font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.25;
+    margin: 0.75rem auto 1rem; max-width: 30ch;
+  }
+  .lead { color: var(--muted); max-width: 38rem; margin: 0 auto; }
+  .soon {
+    display: inline-block; margin-top: 1.5rem; padding: 0.45rem 1rem; border-radius: 999px;
+    background: var(--food-fill); color: var(--food-ink); font-weight: 600; font-size: 0.95rem;
+  }
+
+  .phone {
+    display: block; width: min(17rem, 72vw); height: auto; border-radius: 1.75rem;
+    box-shadow: var(--shadow); background: var(--surface);
+  }
+
+  .feature {
+    display: grid; grid-template-columns: 1fr; gap: 1.75rem; align-items: center;
+    justify-items: center; padding: 3rem 0; border-top: 1px solid var(--rule);
+  }
+  .feature .text { max-width: 30rem; }
+  .feature h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); margin: 0 0 0.75rem; }
+  .feature p { margin: 0; color: var(--muted); }
+  .medicine h2 { color: var(--medicine); }
+  .pair { display: flex; gap: 0.75rem; justify-content: center; }
+  .pair .phone { width: min(14rem, calc(50vw - 1.4rem)); border-radius: 1.25rem; }
+  @media (min-width: 48rem) {
+    .feature { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .phone { width: 19rem; }
+    .pair .phone { width: 15rem; }
+    .feature.flip .shot { order: 2; }
+    .feature .text { justify-self: start; }
+    .feature.flip .text { justify-self: end; }
+  }
+
+  .more {
+    list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .more li {
+    background: var(--surface); border-radius: 1rem; padding: 1rem 1.25rem;
+    border: 1px solid var(--rule);
+  }
+  .note {
+    margin: 2.5rem auto 0; max-width: 40rem; text-align: center; color: var(--muted);
+    font-size: 0.95rem;
+  }
+  footer {
+    border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 1.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: center;
+    color: var(--muted); font-size: 0.9rem;
+  }
+</style>
+<script>
+  // Hungarian for a Hungarian browser, English for everyone else; a #hu or
+  // #en in the address wins, so a link can pick the language.
+  (function () {
+    var fromHash = location.hash.slice(1);
+    var lang = fromHash === 'hu' || fromHash === 'en' ? fromHash
+      : (navigator.language || '').toLowerCase().indexOf('hu') === 0 ? 'hu' : 'en';
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    addEventListener('hashchange', function () {
+      var h = location.hash.slice(1);
+      if (h === 'hu' || h === 'en') {
+        document.documentElement.setAttribute('data-lang', h);
+        document.documentElement.setAttribute('lang', h);
+      }
+    });
+  })();
+</script>
+</head>
+<body>
+<nav class="bar">
+  <a href="#en" hreflang="en">English</a>
+  <a href="#hu" hreflang="hu">Magyar</a>
+</nav>
+
+<main class="page" lang="en">
+  <header class="hero">
+    <h1>Spájz</h1>
+    <p class="tagline">Know what's about to expire in your kitchen, and in your medicine box.</p>
+    <p class="lead">Spájz keeps track of the food and medicine you already have at home,
+      and shows what needs using first. No account, no ads: everything stays on your phone.</p>
+    <span class="soon">Coming soon to the App Store and Google Play</span>
+  </header>
+
+  <section class="feature">
+    <div class="shot"><img class="phone" src="img/en-food.webp" width="600" height="1278" loading="lazy"
+      alt="The food list, grouped into expired, the next three days, this week and later."></div>
+    <div class="text">
+      <h2>What needs attention comes first</h2>
+      <p>Everything is grouped by when it runs out: expired, the next few days, this week,
+        and later. Opening something counts too. An opened pot of yoghurt keeps for days,
+        not months, and Spájz counts from the day you opened it.</p>
+    </div>
+  </section>
+
+  <section class="feature flip">
+    <div class="shot"><img class="phone" src="img/en-actions.webp" width="600" height="1278" loading="lazy"
+      alt="A row swiped open, showing Used up, Opened and Thrown out."></div>
+    <div class="text">
+      <h2>One swipe</h2>
+      <p>Swipe a row to mark it used up, opened or thrown out. Changed your mind?
+        Every one of them can be undone.</p>
+    </div>
+  </section>
+
+  <section class="feature medicine">
+    <div class="shot"><img class="phone" src="img/en-meds.webp" width="600" height="1278" loading="lazy"
+      alt="The medicine list, with a running course at the top and packs showing how much is left."></div>
+    <div class="text">
+      <h2>Food and medicine, kept apart</h2>
+      <p>Two lists, one tap apart. Urgency has the same colours in both, and the marker's
+        shape tells them apart: round for food, square for medicine. Packs you count show
+        how much is left.</p>
+    </div>
+  </section>
+
+  <section class="feature medicine flip">
+    <div class="shot"><img class="phone" src="img/en-course.webp" width="600" height="1278" loading="lazy"
+      alt="A medicine course: the pack, the schedule, the next dose, and buttons for Dose taken, Missed and Finished."></div>
+    <div class="text">
+      <h2>Medicine courses</h2>
+      <p>Set when a medicine is taken. Spájz shows the next dose, logs each one as taken
+        or missed, and keeps count of what's left in the pack. It records and counts;
+        it never gives medical advice.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="shot pair">
+      <img class="phone" src="img/en-food-dark.webp" width="600" height="1278" loading="lazy"
+        alt="The food list in the dark theme.">
+      <img class="phone" src="img/en-meds-dark.webp" width="600" height="1278" loading="lazy"
+        alt="The medicine list in the dark theme.">
+    </div>
+    <div class="text">
+      <h2>Light or dark</h2>
+      <p>Spájz follows your phone's setting, or you can pick one yourself.</p>
+    </div>
+  </section>
+
+  <section class="feature" style="display:block">
+    <ul class="more">
+      <li>A daily reminder, in the morning, of what expires soon</li>
+      <li>Scan a barcode to fill in the name</li>
+      <li>Backups to iCloud on iPhone, or to a file on either phone</li>
+      <li>In Hungarian and English</li>
+    </ul>
+    <p class="note">Spájz does not give medical advice. It reminds you of dates and
+      records what you log; for anything about a medicine, ask a doctor or pharmacist.</p>
+  </section>
+
+  <footer>
+    <a href="privacy.html#en">Privacy policy</a>
+    <a href="mailto:daniel.torok.contact@gmail.com">daniel.torok.contact@gmail.com</a>
+    <span>© 2026 Daniel Török</span>
+  </footer>
+</main>
+
+<main class="page" lang="hu">
+  <header class="hero">
+    <h1>Spájz</h1>
+    <p class="tagline">Tudd, mi jár le a konyhádban és a gyógyszeres dobozban.</p>
+    <p class="lead">A Spájz számon tartja az otthon lévő ételeket és gyógyszereket, és
+      megmutatja, mit érdemes előbb felhasználni. Nincs fiók, nincs reklám: minden a
+      telefonodon marad.</p>
+    <span class="soon">Hamarosan az App Store-ban és a Google Playen</span>
+  </header>
+
+  <section class="feature">
+    <div class="shot"><img class="phone" src="img/hu-food.webp" width="600" height="1278" loading="lazy"
+      alt="Az ételek listája: lejárt, következő 3 nap, ezen a héten, később."></div>
+    <div class="text">
+      <h2>Elöl az, ami figyelmet kér</h2>
+      <p>Minden aszerint rendeződik, mikor jár le: lejárt, a következő napok, ez a hét
+        és később. A felbontás is számít: a felbontott tejföl napokig áll el, nem
+        hónapokig, és a Spájz a felbontás napjától számol.</p>
+    </div>
+  </section>
+
+  <section class="feature flip">
+    <div class="shot"><img class="phone" src="img/hu-actions.webp" width="600" height="1278" loading="lazy"
+      alt="Elhúzott sor: Elfogyott, Felbontva, Kidobva."></div>
+    <div class="text">
+      <h2>Egy húzással</h2>
+      <p>Húzd el a sort, és jelöld elfogyottnak, felbontottnak vagy kidobottnak.
+        Meggondoltad magad? Mindegyik visszavonható.</p>
+    </div>
+  </section>
+
+  <section class="feature medicine">
+    <div class="shot"><img class="phone" src="img/hu-meds.webp" width="600" height="1278" loading="lazy"
+      alt="A gyógyszerek listája, fölül a futó kúrával, a csomagoknál a maradékkal."></div>
+    <div class="text">
+      <h2>Étel és gyógyszer külön</h2>
+      <p>Két lista, egy koppintásnyira egymástól. A sürgősség színei mindkettőben
+        ugyanazok, a jel formája pedig megkülönbözteti őket: az étel kerek, a gyógyszer
+        szögletes. A megszámolt csomagoknál látod, mennyi maradt.</p>
+    </div>
+  </section>
+
+  <section class="feature medicine flip">
+    <div class="shot"><img class="phone" src="img/hu-course.webp" width="600" height="1278" loading="lazy"
+      alt="Egy gyógyszerkúra: a csomag, az adagolás, a következő adag, és a Bevéve, Kimaradt, Befejezve gombok."></div>
+    <div class="text">
+      <h2>Gyógyszerkúrák</h2>
+      <p>Add meg, mikor kell bevenni a gyógyszert. A Spájz mutatja a következő adagot,
+        naplózza, melyiket vetted be és melyik maradt ki, és számolja, mennyi maradt a
+        csomagban. Naplóz és számol, orvosi tanácsot soha nem ad.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="shot pair">
+      <img class="phone" src="img/hu-food-dark.webp" width="600" height="1278" loading="lazy"
+        alt="Az ételek listája sötét témában.">
+      <img class="phone" src="img/hu-meds-dark.webp" width="600" height="1278" loading="lazy"
+        alt="A gyógyszerek listája sötét témában.">
+    </div>
+    <div class="text">
+      <h2>Világos vagy sötét</h2>
+      <p>A Spájz a telefonod beállítását követi, vagy te választasz.</p>
+    </div>
+  </section>
+
+  <section class="feature" style="display:block">
+    <ul class="more">
+      <li>Napi emlékeztető reggel arról, ami hamarosan lejár</li>
+      <li>Vonalkód-olvasás, hogy ne kelljen begépelni a nevet</li>
+      <li>Mentés iCloudba iPhone-on, vagy fájlba bármelyik telefonon</li>
+      <li>Magyarul és angolul</li>
+    </ul>
+    <p class="note">A Spájz nem ad orvosi tanácsot. Emlékeztet a dátumokra, és rögzíti,
+      amit naplózol; ha egy gyógyszerrel kapcsolatban kérdésed van, kérdezd az orvosodat
+      vagy a gyógyszerészt.</p>
+  </section>
+
+  <footer>
+    <a href="privacy.html#hu">Adatvédelmi tájékoztató</a>
+    <a href="mailto:daniel.torok.contact@gmail.com">daniel.torok.contact@gmail.com</a>
+    <span>© 2026 Török Dániel</span>
+  </footer>
+</main>
+</body>
+</html>
