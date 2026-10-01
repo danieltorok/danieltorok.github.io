@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Névnapok</title>
+<meta name="description" content="Névnapok: a magyar névnapok naptára. Csillagozd meg, akit nem akarsz elfelejteni, és a névnapja bekerül a telefonod naptárába.">
+<meta property="og:title" content="Névnapok">
+<meta property="og:description" content="Ki ünnepel ma? Névnapok naptárlapokon, emlékeztetővel és modullal a kezdőképernyőn.">
+<meta property="og:image" content="https://danieltorok.github.io/namedays/img/list.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<style>
+  /* The app's own colours: brand red, charcoal and neutral greys, never plain white. */
+  :root {
+    --bg: #eaeaea;
+    --surface: #f2f2f2;
+    --text: #1e1f22;
+    --muted: #55575c;
+    --rule: #d3d3d5;
+    --red: #ea4e43;
+    --red-ink: #b93a31;
+    --red-fill: #f6d6d2;
+    --band: #d9dcd3;
+    --shadow: 0 18px 40px -18px rgba(30, 31, 34, 0.45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1f22;
+      --surface: #2a2b2f;
+      --text: #ececec;
+      --muted: #a9abb0;
+      --rule: #34363a;
+      --red: #ea4e43;
+      --red-ink: #f07a71;
+      --red-fill: #3b2624;
+      --band: #3b4a40;
+      --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 18px/1.6 Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--red-ink); }
+  h1, h2 { font-family: Fraunces, Georgia, serif; line-height: 1.1; }
+
+  .page { max-width: 64rem; margin: 0 auto; padding: 0 1rem 3rem; }
+
+  .hero { text-align: center; padding: 3.5rem 0 2rem; }
+  .hero h1 { font-size: clamp(3.2rem, 12vw, 5.5rem); font-weight: 900; margin: 0; letter-spacing: -0.02em; }
+  .tagline {
+    font-family: Fraunces, Georgia, serif; font-weight: 700;
+    font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.25;
+    margin: 0.75rem auto 1rem; max-width: 30ch;
+  }
+  .lead { color: var(--muted); max-width: 38rem; margin: 0 auto; }
+  .stores {
+    display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.75rem;
+  }
+  .stores a { display: block; line-height: 0; }
+  .stores img { height: 3rem; width: auto; }
+
+  /* Today's date as the app draws it: a wall-calendar tile, weekday band over the number. */
+  .tile {
+    display: inline-flex; flex-direction: column; width: 4.6rem; margin-bottom: 1.25rem;
+    border-radius: 0.6rem; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--red); box-shadow: var(--shadow);
+  }
+  .tile .wd {
+    background: var(--red); color: #1e1f22; font-weight: 600; font-size: 0.8rem;
+    letter-spacing: 0.08em; padding: 0.15rem 0;
+  }
+  .tile .day {
+    font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 2.3rem;
+    line-height: 1; padding: 0.35rem 0 0.5rem; color: var(--red-ink);
+  }
+
+  .phone {
+    display: block; width: min(17rem, 72vw); height: auto; border-radius: 1.75rem;
+    box-shadow: var(--shadow); background: var(--surface);
+  }
+
+  .feature {
+    display: grid; grid-template-columns: 1fr; gap: 1.75rem; align-items: center;
+    justify-items: center; padding: 3rem 0; border-top: 1px solid var(--rule);
+  }
+  .feature .text { max-width: 30rem; }
+  .feature h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); margin: 0 0 0.75rem; }
+  .feature p { margin: 0; color: var(--muted); }
+  .feature p + p { margin-top: 0.75rem; }
+  .pair { display: flex; gap: 0.75rem; justify-content: center; }
+  .pair .phone { width: min(14rem, calc(50vw - 1.4rem)); border-radius: 1.25rem; }
+  @media (min-width: 48rem) {
+    .feature { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .phone { width: 19rem; }
+    .pair .phone { width: 15rem; }
+    .feature.flip .shot { order: 2; }
+    .feature .text { justify-self: start; }
+    .feature.flip .text { justify-self: end; }
+  }
+
+  .more {
+    list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .more li {
+    background: var(--surface); border-radius: 1rem; padding: 1rem 1.25rem;
+    border: 1px solid var(--rule);
+  }
+  .note {
+    margin: 2.5rem auto 0; max-width: 40rem; text-align: center; color: var(--muted);
+    font-size: 0.95rem;
+  }
+  footer {
+    border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 1.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: center;
+    color: var(--muted); font-size: 0.9rem;
+  }
+</style>
+<script>
+  // The hero tile shows today, with the app's Hungarian weekday letters.
+  addEventListener('DOMContentLoaded', function () {
+    var now = new Date();
+    var wd = ['V', 'H', 'K', 'SZE', 'CS', 'P', 'SZO'][now.getDay()];
+    document.querySelectorAll('.tile').forEach(function (tile) {
+      tile.querySelector('.wd').textContent = wd;
+      tile.querySelector('.day').textContent = now.getDate();
+    });
+  });
+</script>
+</head>
+<body>
+
+<main class="page">
+  <header class="hero">
+    <div class="tile" aria-hidden="true"><span class="wd">CS</span><span class="day">1</span></div>
+    <h1>Névnapok</h1>
+    <p class="tagline">Ki ünnepel ma? És ki jövő héten?</p>
+    <p class="lead">A Névnapok az év minden napját megmutatja a hozzá tartozó nevekkel, és
+      szól, mielőtt egy fontos névnap elmúlna. Nincs fiók, nincs reklám: minden a
+      telefonodon marad.</p>
+    <div class="stores">
+      <a href="https://apps.apple.com/hu/app/n%C3%A9vnapok/id1548310950"><img src="img/appstore-badge.svg" width="151" height="40" alt="Letölthető az App Store-ból"></a>
+      <a href="https://play.google.com/store/apps/details?id=hu.rarity.react.namedays"><img src="img/googleplay-badge.png" width="135" height="40" alt="Szerezd be: Google Play"></a>
+    </div>
+  </header>
+
+  <section class="feature">
+    <div class="shot"><img class="phone" src="img/list.webp" width="600" height="1278" loading="lazy"
+      alt="A névnapok listája naptárlapokkal, fölül a mai nap pirosan: július 21., a csillagozott Dániel és Daniella."></div>
+    <div class="text">
+      <h2>Minden nap egy naptárlap</h2>
+      <p>A lista úgy néz ki, mint egy falinaptár: minden napnál ott a hét napja, a dátum
+        és az összes név, elöl a fő nevekkel. A mai nap piros, és a Ma gomb bárhonnan
+        visszavisz hozzá.</p>
+    </div>
+  </section>
+
+  <section class="feature flip">
+    <div class="shot"><img class="phone" src="img/day.webp" width="600" height="1278" loading="lazy"
+      alt="A mai nap, július 21. lapja: Dániel csillagozva, naptárban; Daniella; Lőrinc."></div>
+    <div class="text">
+      <h2>Keress rá, és csillagozd meg</h2>
+      <p>Írd be a nevet, ékezet nélkül is: a „daniel” megtalálja Dánielt. Koppints a
+        napra, és csillagozd meg, akinek a névnapját nem akarod elfelejteni.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="shot pair">
+      <img class="phone" src="img/starred.webp" width="600" height="1278" loading="lazy"
+        alt="A csillagozott nevek: Dániel ma, július 21.; Dóra 200 nap múlva, február 6.">
+      <img class="phone" src="img/reminders.webp" width="600" height="1278" loading="lazy"
+        alt="Az emlékeztetők beállítása: a névnapon, 09:00-kor, a telefon alapértelmezett naptárába.">
+    </div>
+    <div class="text">
+      <h2>A naptárad szól időben</h2>
+      <p>A csillagozott nevek névnapja bekerül a telefonod naptárába, így ott is látod,
+        és a telefon emlékeztet: a névnapon, vagy egy-két nappal előtte, abban az
+        órában, amit választasz.</p>
+      <p>A csillagozott nevek listája a legközelebbivel kezdődik, és megmutatja, hány nap
+        van még hátra.</p>
+    </div>
+  </section>
+
+  <section class="feature flip">
+    <div class="shot pair">
+      <img class="phone" src="img/widgets.webp" width="600" height="1278" loading="lazy"
+        alt="Két modul a kezdőképernyőn: átlátszó modul a mai névnappal, Dániel és Daniella; alatta rózsaszín kártya a tegnapi, mai és holnapi névnappal.">
+      <img class="phone" src="img/look.webp" width="600" height="1278" loading="lazy"
+        alt="A modul megjelenése: átlátszó vagy kártya, háttérszín és betűszín.">
+    </div>
+    <div class="text">
+      <h2>A kezdőképernyőn is</h2>
+      <p>Tedd ki a mai névnapot, vagy a tegnapit, a maival és a holnapival együtt,
+        iPhone-on és Androidon is. Androidon minden modul saját megjelenést kaphat:
+        átlátszó, körvonalas betűkkel, vagy színes kártya.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="shot"><img class="phone" src="img/edit.webp" width="600" height="1278" loading="lazy"
+      alt="Július 21. nevei szerkesztés közben: Dániel, Daniella, egy Új név gomb, és Lőrinc a további nevek között."></div>
+    <div class="text">
+      <h2>Ha hiányzik egy név</h2>
+      <p>Add hozzá a saját napjához, és ugyanúgy megcsillagozhatod, mint bármelyik
+        másikat. Amelyik névre nincs szükséged, azt elrejtheted, és bármikor
+        visszahozhatod.</p>
+    </div>
+  </section>
+
+  <section class="feature" style="display:block">
+    <ul class="more">
+      <li>Világos vagy sötét téma: a telefonodat követi, vagy te választasz</li>
+      <li>Szökőévben is a jó napon: a február 24–28-i névnapok ilyenkor egy nappal később vannak</li>
+      <li>iPhone-on a zárolási képernyőre is kiteheted a mai névnapot</li>
+      <li>Nincs fiók és nincs reklám, és az app semmilyen adatot nem gyűjt</li>
+    </ul>
+  </section>
+
+  <footer>
+    <a href="mailto:nevnapok.kapcsolat@gmail.com">nevnapok.kapcsolat@gmail.com</a>
+    <span>© 2026 Török Dániel</span>
+  </footer>
+</main>
+
+</body>
+</html>
