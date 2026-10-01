@@ -107,7 +107,10 @@
 
   .more {
     list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    width: 100%; grid-template-columns: 1fr;
+  }
+  @media (min-width: 48rem) {
+    .more { grid-template-columns: repeat(3, 1fr); }
   }
   .more li {
     background: var(--surface); border-radius: 1rem; padding: 1rem 1.25rem;
@@ -218,7 +221,6 @@
   <section class="feature" style="display:block">
     <ul class="more">
       <li>Világos vagy sötét téma: a telefonodat követi, vagy te választasz</li>
-      <li>Szökőévben is a jó napon: a február 24–28-i névnapok ilyenkor egy nappal később vannak</li>
       <li>iPhone-on a zárolási képernyőre is kiteheted a mai névnapot</li>
       <li>Nincs fiók és nincs reklám, és az app semmilyen adatot nem gyűjt</li>
     </ul>
