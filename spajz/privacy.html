@@ -49,14 +49,13 @@
 
 <section id="en" lang="en">
 <h1>Spájz – Privacy Policy</h1>
-<p class="meta">Effective 26 September 2026</p>
+<p class="meta">Effective 24 October 2026</p>
 
-<p class="summary">Spájz keeps your data on your phone. There is no Spájz
-account, no advertising, no analytics and no tracking, and the developer never
-receives anything you enter into the app. The app sends two things over the
-internet: the barcode of a product it doesn't recognise, to look up the
-product's name, and backups, which go only to your own iCloud or Google
-Drive.</p>
+<p class="summary">Spájz keeps your own pantry on your phone. If you share a
+pantry with other people in a household, what is in that household is stored
+on the developer's server in the EU, so that every member's phone shows the
+same pantry. Your medicine courses, dose logs and settings never leave your
+phone. There is no advertising, no analytics and no tracking.</p>
 
 <h2>Who is responsible</h2>
 <p>Spájz is developed by Daniel Török, an individual developer based in Hungary,
@@ -64,7 +63,7 @@ who is the data controller under the EU General Data Protection Regulation
 (GDPR). For any question about this policy or your data, write to
 <a href="mailto:daniel.torok.contact@gmail.com">daniel.torok.contact@gmail.com</a>.</p>
 
-<h2>What the app stores, and where</h2>
+<h2>What the app stores on your phone</h2>
 <p>Everything you enter is stored in a database inside the app's private
 storage on your device:</p>
 <ul>
@@ -75,15 +74,67 @@ storage on your device:</p>
     schedule, notes, and the log of doses taken or missed;</li>
   <li>your settings, such as language, theme and reminder preferences.</li>
 </ul>
-<p>Medicine courses and dose logs are health information. Like everything
-else, they stay on your device and are never sent to the developer or to
-anyone else by the app.</p>
+<p>Your own pantry, <em>My pantry</em>, is never sent to the developer.
+Medicine courses and dose logs are health information; they stay on your
+device even when you are in a household, and are never sent to the developer
+or to anyone else by the app.</p>
 <p>The data is protected by your phone's own security: other apps cannot read
 another app's private storage, and on a phone with a screen lock the
 operating system encrypts its storage. The app does not add encryption of its
 own.</p>
 
-<h2>What leaves your device</h2>
+<h2>Households</h2>
+<p>A household is a pantry shared by the people in it. Using households is
+optional; everything else in the app works without them.</p>
+
+<p><strong>Your Spájz account.</strong> To create or join a household you sign
+in with Apple or Google. That creates a Spájz account, which exists only while
+you belong to at least one household. From Apple or Google the app receives an
+identifier that tells your account apart, and your email address if they
+provide one (Apple lets you hide it). Apple also issues a token that is kept
+only so that Sign in with Apple can be revoked when your account is deleted.
+The email address is used only to answer support requests.</p>
+
+<p><strong>What the server holds.</strong></p>
+<ul>
+  <li>your account: the sign-in identifier, the email address if any, and when
+    the account was created and last used;</li>
+  <li>for each household you are in: the display name you chose for it, when
+    you joined, and when you agreed to this policy and to which version;</li>
+  <li>your phones: whether each is an iPhone or Android, the app version, and
+    when it last synced;</li>
+  <li>the household: its name and icon, and its items and products, with the
+    fields listed above, including medicine you keep in it. Each item records
+    which member added it;</li>
+  <li>invites: a code you share is stored only in a form that cannot be read
+    back, and stops working after seven days or one use.</li>
+</ul>
+
+<p><strong>Who sees it.</strong> Every member of a household sees all of its
+items, medicine included, the other members' display names, and who added
+each item. The developer can access the server to run the service, answer
+support requests and meet legal obligations, and does not look at household
+contents otherwise. Nothing is sold, rented or shared with anyone else.</p>
+
+<p><strong>Health information and your consent.</strong> Medicine kept in a
+household is health information, a special category of personal data. Before
+you create or join a household, the app asks for your explicit consent to it
+being stored and shared with the household's members (GDPR Article 9(2)(a)),
+and records when you agreed and to which version of this policy. You can
+withdraw your consent at any time by leaving the household. The rest of the
+account and household data is processed to provide the household you asked
+for (GDPR Article 6(1)(b)).</p>
+
+<p><strong>Where it is kept.</strong> The server and its backups are in the
+European Union. They are run by a hosting provider and a backup storage
+provider that process the data only on the developer's behalf and under data
+processing agreements (GDPR Article 28). Their names are given on request. The
+data is not transferred outside the European Economic Area by the developer.
+The app talks to the server only over encrypted (HTTPS) connections. The
+server uses your IP address only to limit how many requests one connection
+can make, and does not store it.</p>
+
+<h2>What else leaves your device</h2>
 <p><strong>Barcode lookup (Open Food Facts).</strong> When you scan a barcode
 the app has not seen before, it asks <a href="https://world.openfoodfacts.org/">Open
 Food Facts</a>, a free, open database of food products, for the product's name
@@ -95,8 +146,9 @@ the same barcode is not looked up again. Open Food Facts handles requests under
 <a href="https://world.openfoodfacts.org/privacy">its own privacy policy</a>.</p>
 
 <p><strong>Backups.</strong> Backups go only to your own accounts, never to
-the developer. A backup contains all of your data described above, including
-medicine courses.</p>
+the developer. A backup contains My pantry, your medicine courses and dose
+logs, and your settings. A household's items are not in it: they are kept on
+the server.</p>
 <ul>
   <li><em>iPhone:</em> if you are signed in to iCloud, the app saves a backup
     of your data to your own iCloud account once a day, in a folder only Spájz
@@ -149,39 +201,68 @@ camera image or what you scan. See
 <p>Reminders about expiring items are created and scheduled on your device.
 There are no push notifications from a server, and nothing about your items is
 sent anywhere to produce them.</p>
-
 <h2>What the app does not do</h2>
 <ul>
-  <li>no Spájz account; the only sign-in is the optional Google sign-in for
-    Drive backups on Android;</li>
+  <li>no account unless you create or join a household; apart from that, the
+    only sign-in is the optional Google sign-in for Drive backups on
+    Android;</li>
   <li>no advertising, and no advertising identifier;</li>
   <li>no analytics, crash reporting or tracking of how you use the app;</li>
   <li>no location, contacts or photo library access;</li>
-  <li>your data is never sold, rented or shared with anyone.</li>
+  <li>your data is never sold or rented, and shared only with the members of
+    a household you are in.</li>
 </ul>
 
 <h2>How long data is kept, and how to delete it</h2>
-<p>Your data stays on your device until you delete it in the app, or until you
-uninstall the app, which removes it from the device. Backups are kept in your
-iCloud or Google account until you delete them there. The app keeps its daily
-backups for a week and then deletes them; the backup you make yourself is
-replaced by the next one. You can remove iCloud backups under Settings →
-[your name] → iCloud → Manage Storage. You can remove the Google Drive backups
-in Google Drive on the web, under Settings → Manage apps → Spájz → Options →
-Delete hidden app data; disconnecting in the app does not delete them. Android's
-device backups are in your Google account's backup settings.</p>
+<p><strong>On your phone.</strong> Your data stays on your device until you
+delete it in the app, or until you uninstall the app, which removes it from the
+device. Backups are kept in your iCloud or Google account until you delete them
+there. The app keeps its daily backups for a week and then deletes them; the
+backup you make yourself is replaced by the next one. You can remove iCloud
+backups under Settings → [your name] → iCloud → Manage Storage. You can remove
+the Google Drive backups in Google Drive on the web, under Settings → Manage
+apps → Spájz → Options → Delete hidden app data; disconnecting in the app does
+not delete them. Android's device backups are in your Google account's backup
+settings.</p>
+
+<p><strong>On the server.</strong></p>
+<ul>
+  <li><em>Leaving a household</em> ends your membership: your display name
+    in it is deleted, and your phone stops syncing it. Before leaving you can
+    keep a copy of its items in My pantry, on your phone. The items you added
+    stay in the household for the other members.</li>
+  <li><em>Any member can remove another</em>, which is the same as that member
+    leaving, and any member can <em>delete the household</em>, which deletes it
+    and everything in it for every member. When the last member leaves, the
+    household is deleted.</li>
+  <li><em>Your account</em> is deleted when your last membership ends, by
+    leaving, being removed or the household being deleted. From then on,
+    nothing on the server links the items you added to you. You can also ask
+    for your account to be deleted by writing to the address above.</li>
+  <li><em>A deleted item</em> loses its contents on the server at once. A
+    marker with its identifier and the time of deletion is kept for 90 days, so
+    that the other members' phones remove it too.</li>
+  <li><em>The server's backups</em> are kept for 30 days, so deleted data
+    disappears from them within 30 days. A record of what was deleted,
+    identifiers only, is kept so that restoring a backup can never bring
+    deleted data back.</li>
+</ul>
 
 <h2>Your rights</h2>
-<p>Because the developer does not receive or hold any of your data, there is
-nothing on the developer's side to access, correct or delete: you control all
-of it on your device. Under the GDPR you have the right to ask about any
-processing of your personal data, and to lodge a complaint with a supervisory
-authority. In Hungary this is the Nemzeti Adatvédelmi és Információszabadság
-Hatóság (<a href="https://naih.hu/">naih.hu</a>).</p>
+<p>Under the GDPR you have the right to access the personal data held about
+you, to have it corrected or deleted, to receive a household's data in a
+portable form (the developer can send it as a file the app can import), to
+object to its processing, and to withdraw your consent at any time, which you
+can do by leaving the household. Most of this you can do in the app yourself:
+your phone's data is yours to change and delete, and you can leave a
+household at any time. For anything else, write to the address
+above. You can also lodge a complaint with a supervisory authority. In Hungary
+this is the Nemzeti Adatvédelmi és Információszabadság Hatóság
+(<a href="https://naih.hu/">naih.hu</a>).</p>
 
 <h2>Children</h2>
-<p>Spájz is not directed at children under 13, and it does not knowingly
-collect personal information from anyone, of any age.</p>
+<p>Spájz is not directed at children. Children under 16 should not create or
+join a household.</p>
 
 <h2>Changes to this policy</h2>
 <p>If the app starts handling data differently, this policy will be updated
@@ -192,14 +273,14 @@ will ask for your permission first.</p>
 
 <section id="hu" lang="hu">
 <h1>Spájz – Adatvédelmi tájékoztató</h1>
-<p class="meta">Hatályos: 2026. szeptember 26.</p>
+<p class="meta">Hatályos: 2026. október 24.</p>
 
-<p class="summary">A Spájz az adataidat a telefonodon tartja. Nincs
-Spájz-fiók, nincs reklám, nincs analitika és nincs követés, a fejlesztőhöz
-pedig semmi nem jut el abból, amit az alkalmazásba beírsz. Két dolgot küld az
-internetre: egy általa nem ismert termék vonalkódját, hogy megtudja a termék
-nevét, és a mentéseket, amelyek csak a saját iCloud- vagy Google
-Drive-fiókodba kerülnek.</p>
+<p class="summary">A Spájz a saját spájzodat a telefonodon tartja. Ha egy
+háztartásban másokkal közösen használsz egy spájzt, az, ami a háztartásban
+van, a fejlesztő EU-ban működő szerverén tárolódik, hogy minden tag telefonja
+ugyanazt a spájzt mutassa. A gyógyszerkúráid, az adagnaplód és a beállításaid
+soha nem hagyják el a telefonodat. Nincs reklám, nincs analitika és nincs
+követés.</p>
 
 <h2>Ki a felelős</h2>
 <p>A Spájzt Török Dániel, Magyarországon élő egyéni fejlesztő készíti, aki az
@@ -208,7 +289,7 @@ tájékoztatóval vagy az adataiddal kapcsolatos kérdéseidet a
 <a href="mailto:daniel.torok.contact@gmail.com">daniel.torok.contact@gmail.com</a>
 címre írhatod meg.</p>
 
-<h2>Mit tárol az alkalmazás, és hol</h2>
+<h2>Mit tárol az alkalmazás a telefonodon</h2>
 <p>Minden, amit beírsz, egy adatbázisban tárolódik, az alkalmazás saját,
 védett tárhelyén a készülékeden:</p>
 <ul>
@@ -219,15 +300,75 @@ védett tárhelyén a készülékeden:</p>
     rend, jegyzetek, valamint a bevett és kihagyott adagok naplója;</li>
   <li>a beállításaid, például a nyelv, a téma és az emlékeztetők.</li>
 </ul>
-<p>A gyógyszerkúrák és az adagnapló egészségügyi adatnak számítanak. Ezek is,
-mint minden más, a készülékeden maradnak, és az alkalmazás soha nem küldi el
-őket sem a fejlesztőnek, sem másnak.</p>
+<p>A saját spájzod, a <em>Saját spájz</em>, soha nem kerül a fejlesztőhöz. A
+gyógyszerkúrák és az adagnapló egészségügyi adatnak számítanak; akkor is a
+készülékeden maradnak, ha háztartásban vagy, és az alkalmazás soha nem küldi
+el őket sem a fejlesztőnek, sem másnak.</p>
 <p>Az adatokat a telefonod saját védelme óvja: más alkalmazások nem férnek
 hozzá egy alkalmazás védett tárhelyéhez, a képernyőzárral védett telefonokon
 pedig az operációs rendszer titkosítja a tárhelyet. Az alkalmazás ezen felül
 nem titkosít.</p>
 
-<h2>Mi hagyja el a készülékedet</h2>
+<h2>Háztartások</h2>
+<p>A háztartás egy spájz, amelyet a tagjai közösen használnak. A háztartás
+használata nem kötelező; az alkalmazás minden más része nélküle is
+működik.</p>
+
+<p><strong>A Spájz-fiókod.</strong> Háztartás létrehozásához vagy az ahhoz
+való csatlakozáshoz Apple- vagy Google-fiókkal jelentkezel be. Ezzel létrejön
+egy Spájz-fiók, amely csak addig létezik, amíg legalább egy háztartás tagja
+vagy. Az Apple-től vagy a Google-tól az alkalmazás egy azonosítót kap, amely
+megkülönbözteti a fiókodat, és az e-mail-címedet, ha megadják (az Apple
+lehetővé teszi, hogy elrejtsd). Az Apple egy tokent is kiad, amelyet csak azért
+őrzünk meg, hogy a fiókod törlésekor az Apple-bejelentkezés visszavonható
+legyen. Az e-mail-címet csak ügyfélszolgálati kérések megválaszolására
+használjuk.</p>
+
+<p><strong>Mit tárol a szerver.</strong></p>
+<ul>
+  <li>a fiókodat: a bejelentkezési azonosítót, az e-mail-címet, ha van, és azt,
+    hogy a fiók mikor jött létre és mikor használtad utoljára;</li>
+  <li>minden háztartásodhoz: az ott választott megjelenített nevedet, azt,
+    hogy mikor csatlakoztál, és hogy mikor és melyik változatát fogadtad el ennek
+    a tájékoztatónak;</li>
+  <li>a telefonjaidat: hogy iPhone vagy Android, az alkalmazás verzióját, és
+    hogy mikor szinkronizált utoljára;</li>
+  <li>a háztartást: a nevét és az ikonját, valamint a tételeit és termékeit, a
+    fent felsorolt adatokkal, a benne tartott gyógyszereket is. Minden tételnél
+    tárolódik, melyik tag vette fel;</li>
+  <li>a meghívókat: a megosztott kódot csak olyan formában tároljuk, amelyből
+    nem olvasható vissza, és hét nap után vagy egyszeri használat után
+    érvényét veszti.</li>
+</ul>
+
+<p><strong>Ki látja.</strong> A háztartás minden tagja látja a háztartás
+összes tételét, a gyógyszereket is, a többi tag megjelenített nevét, és hogy
+melyik tételt ki vette fel. A fejlesztő a szolgáltatás működtetéséhez,
+ügyfélszolgálati kérések megválaszolásához és jogi kötelezettségek
+teljesítéséhez fér hozzá a szerverhez, egyébként nem nézi meg a háztartások
+tartalmát. Semmit nem adunk el, nem adunk bérbe, és nem osztunk meg senki
+mással.</p>
+
+<p><strong>Egészségügyi adatok és a hozzájárulásod.</strong> A háztartásban
+tartott gyógyszer egészségügyi adat, a személyes adatok különleges
+kategóriája. Mielőtt háztartást hozol létre vagy csatlakozol egyhez, az
+alkalmazás kifejezett hozzájárulásodat kéri ahhoz, hogy ezeket tároljuk és a
+háztartás tagjaival megosszuk (GDPR 9. cikk (2) bekezdés a) pont), és rögzíti,
+mikor és a tájékoztató melyik változatához járultál hozzá. A hozzájárulásodat
+bármikor visszavonhatod azzal, hogy kilépsz a háztartásból. A fiók és a
+háztartás többi adatát az általad kért háztartás biztosításához kezeljük
+(GDPR 6. cikk (1) bekezdés b) pont).</p>
+
+<p><strong>Hol tároljuk.</strong> A szerver és a mentései az Európai Unióban
+vannak. Egy tárhelyszolgáltató és egy mentési tárhelyszolgáltató működteti
+őket, amelyek az adatokat csak a fejlesztő megbízásából, adatfeldolgozási
+szerződés alapján kezelik (GDPR 28. cikk). A nevüket kérésre megadjuk. A
+fejlesztő az adatokat nem továbbítja az Európai Gazdasági Térségen kívülre. Az
+alkalmazás csak titkosított (HTTPS) kapcsolaton kommunikál a szerverrel. A
+szerver az IP-címedet csak arra használja, hogy korlátozza, egy kapcsolat hány
+kérést küldhet, és nem tárolja.</p>
+
+<h2>Mi hagyja még el a készülékedet</h2>
 <p><strong>Vonalkód-keresés (Open Food Facts).</strong> Ha olyan vonalkódot
 olvasol be, amelyet az alkalmazás még nem ismer, az
 <a href="https://hu.openfoodfacts.org/">Open Food Facts</a> ingyenes, nyílt
@@ -240,8 +381,9 @@ a kéréseket <a href="https://world.openfoodfacts.org/privacy">saját adatvéde
 szabályzata</a> szerint kezeli.</p>
 
 <p><strong>Mentések.</strong> A mentések csak a saját fiókjaidba kerülnek,
-a fejlesztőhöz soha. Egy mentés a fent felsorolt összes adatodat tartalmazza,
-a gyógyszerkúrákat is.</p>
+a fejlesztőhöz soha. Egy mentés a Saját spájzot, a gyógyszerkúráidat és az
+adagnaplót, valamint a beállításaidat tartalmazza. A háztartások tételei nincsenek
+benne: azokat a szerver őrzi.</p>
 <ul>
   <li><em>iPhone:</em> ha be vagy jelentkezve az iCloudba, az alkalmazás
     naponta egyszer mentést készít az adataidról a saját iCloud-fiókodba, egy
@@ -299,43 +441,71 @@ vonalkód-olvasó; a kamera képét és azt, amit beolvasol, nem küldi el. Lás
 <p>A lejáró tételekről szóló emlékeztetőket az alkalmazás a készülékeden
 készíti és ütemezi. Szerverről érkező (push) értesítés nincs, és az
 emlékeztetőkhöz semmilyen adat nem kerül el a tételeidről.</p>
-
 <h2>Amit az alkalmazás nem tesz</h2>
 <ul>
-  <li>nincs Spájz-fiók; az egyetlen bejelentkezés a Google Drive-mentésekhez
+  <li>nincs fiók, hacsak nem hozol létre háztartást vagy nem csatlakozol
+    egyhez; ezen kívül az egyetlen bejelentkezés a Google Drive-mentésekhez
     használható, nem kötelező Google-bejelentkezés Androidon;</li>
   <li>nincs reklám és reklámazonosító;</li>
   <li>nincs analitika, hibajelentés-küldés vagy a használat követése;</li>
   <li>nem fér hozzá a helyadatokhoz, a névjegyekhez és a fotókhoz;</li>
-  <li>az adataidat soha senkinek nem adja el, nem adja bérbe és nem osztja
-    meg.</li>
+  <li>az adataidat soha senkinek nem adja el és nem adja bérbe, és csak azon
+    háztartások tagjaival osztja meg, amelyeknek tagja vagy.</li>
 </ul>
 
 <h2>Meddig maradnak meg az adatok, és hogyan törölheted őket</h2>
-<p>Az adataid addig maradnak a készülékeden, amíg nem törlöd őket az
-alkalmazásban, vagy amíg el nem távolítod az alkalmazást, ami a készülékről is
-törli őket. A mentések az iCloud- vagy Google-fiókodban maradnak, amíg ott nem
-törlöd őket. Az alkalmazás a napi mentéseket egy hétig őrzi meg, utána törli
-őket; a kézzel készített mentést a következő kézi mentés váltja fel. Az
-iCloud-mentéseket a Beállítások → [a neved] → iCloud → Tárhely kezelése
-menüben törölheted. A Google Drive-mentéseket a Google Drive webes felületén, a
-Beállítások → Alkalmazások kezelése → Spájz → Beállítások → Rejtett
-alkalmazásadatok törlése
-menüben törölheted; a leválasztás az alkalmazásban nem törli őket. Az Android
+<p><strong>A telefonodon.</strong> Az adataid addig maradnak a készülékeden,
+amíg nem törlöd őket az alkalmazásban, vagy amíg el nem távolítod az
+alkalmazást, ami a készülékről is törli őket. A mentések az iCloud- vagy
+Google-fiókodban maradnak, amíg ott nem törlöd őket. Az alkalmazás a napi
+mentéseket egy hétig őrzi meg, utána törli őket; a kézzel készített mentést a
+következő kézi mentés váltja fel. Az iCloud-mentéseket a Beállítások → [a
+neved] → iCloud → Tárhely kezelése menüben törölheted. A Google
+Drive-mentéseket a Google Drive webes felületén, a Beállítások → Alkalmazások
+kezelése → Spájz → Beállítások → Rejtett alkalmazásadatok törlése menüben
+törölheted; a leválasztás az alkalmazásban nem törli őket. Az Android
 készülékmentéseit a Google-fiókod biztonsági mentési beállításaiban
 találod.</p>
 
+<p><strong>A szerveren.</strong></p>
+<ul>
+  <li><em>Ha kilépsz egy háztartásból,</em> megszűnik a tagságod: az ott
+    használt megjelenített neved törlődik, és a telefonod nem szinkronizálja
+    tovább. Kilépés előtt a tételeiről másolatot tarthatsz meg a telefonodon, a
+    Saját spájzban. Az általad felvett tételek a többi tag számára a
+    háztartásban maradnak.</li>
+  <li><em>Bármelyik tag eltávolíthat egy másikat,</em> ami ugyanaz, mintha az
+    a tag kilépett volna, és bármelyik tag <em>törölheti a háztartást,</em> ami
+    mindenkinek törli azt mindenestül. Ha az utolsó tag is kilép, a háztartás
+    törlődik.</li>
+  <li><em>A fiókod</em> törlődik, amikor az utolsó tagságod megszűnik, akár
+    kilépés, akár eltávolítás, akár a háztartás törlése miatt. Ettől kezdve a
+    szerveren semmi nem köti hozzád az általad felvett tételeket. A fiókod
+    törlését a fenti címre írva is kérheted.</li>
+  <li><em>Egy törölt tétel</em> tartalma azonnal törlődik a szerverről. Egy
+    jelölés az azonosítójával és a törlés idejével 90 napig megmarad, hogy a
+    többi tag telefonjáról is eltűnjön.</li>
+  <li><em>A szerver mentéseit</em> 30 napig őrizzük, így a törölt adatok 30
+    napon belül a mentésekből is eltűnnek. A törlésekről egy csak azonosítókat
+    tartalmazó nyilvántartás megmarad, hogy egy mentés visszaállítása soha ne
+    hozhassa vissza a törölt adatokat.</li>
+</ul>
+
 <h2>A jogaid</h2>
-<p>Mivel a fejlesztő semmilyen adatodat nem kapja meg és nem tárolja, nála
-nincs mihez hozzáférni, mit helyesbíteni vagy törölni: minden adatod felett te
-rendelkezel a készülékeden. A GDPR alapján jogod van tájékoztatást kérni a
-személyes adataid bármilyen kezeléséről, és panaszt tehetsz a felügyeleti
-hatóságnál, amely Magyarországon a Nemzeti Adatvédelmi és
+<p>A GDPR alapján jogod van hozzáférni a rólad tárolt személyes adatokhoz,
+kérni azok helyesbítését vagy törlését, egy háztartás adatait hordozható
+formában megkapni (a fejlesztő elküldheti olyan fájlként, amelyet az
+alkalmazás be tud tölteni), tiltakozni a kezelésük ellen, és a
+hozzájárulásodat bármikor visszavonni, amit a háztartásból való kilépéssel
+tehetsz meg. Ezek nagy részét magad is megteheted az alkalmazásban: a
+telefonodon lévő adatokat te módosítod és törlöd, és bármikor kiléphetsz egy
+háztartásból. Minden más esetben írj a fenti címre. Panaszt tehetsz a
+felügyeleti hatóságnál is, amely Magyarországon a Nemzeti Adatvédelmi és
 Információszabadság Hatóság (<a href="https://naih.hu/">naih.hu</a>).</p>
 
 <h2>Gyermekek</h2>
-<p>A Spájz nem 13 év alatti gyermekeknek készült, és szándékosan senkitől,
-semmilyen életkorban nem gyűjt személyes adatot.</p>
+<p>A Spájz nem gyermekeknek készült. 16 év alatti gyermek ne hozzon létre
+háztartást, és ne csatlakozzon egyhez.</p>
 
 <h2>A tájékoztató módosítása</h2>
 <p>Ha az alkalmazás másként kezd bánni az adatokkal, ez a tájékoztató még az
@@ -346,3 +516,4 @@ engedélyt kér tőled.</p>
 </main>
 </body>
 </html>
+
